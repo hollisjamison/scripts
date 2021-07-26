@@ -30,13 +30,14 @@ pg_restore.exe -h localhost -p 4432 -U postgres -d QSR "c:\QSR_backup.tar"
 ### SQL to list all users with the issue
 ```
 SELECT * from public."Users"
-WHERE "UserDirectory" = 'ADMIN'
-AND "UserDirectoryConnectorName" <> 'ADMIN';
+WHERE "UserDirectory" = 'STAFF'
+AND "UserDirectoryConnectorName" <> 'STAFF';
 ```
 
 ### SQL to run the change
 ```
 UPDATE public."Users"
-WHERE "UserDirectory" = 'ADMIN'
-AND "UserDirectoryConnectorName" <> 'ADMIN';
+SET "UserDirectoryConnectorName" = 'STAFF'
+WHERE "UserDirectory" = 'STAFF'
+AND "UserDirectoryConnectorName" <> 'STAFF';
 ```
